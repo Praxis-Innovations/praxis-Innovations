@@ -66,17 +66,19 @@ RUN adduser --system --uid 1001 nodejs
 
 # Copy built application
 ARG BUILD_OUTPUT_DIR
-COPY --from=builder --chown=nodejs:nodejs /app/${BUILD_OUTPUT_DIR} ./${BUILD_OUTPUT_DIR}
+RUN if [ -n "$BUILD_OUTPUT_DIR" ]; then \
+        IFS=',' read -ra DIRS <<< "$BUILD_OUTPUT_DIR"; \
+        for dir in "${DIRS[@]}"; do \
+            if [ -d "/app/$dir" ]; then \
+                mkdir -p "./$dir"; \
+                cp -r "/app/$dir"/* "./$dir/"; \
+            fi; \
+        done; \
+    fi
 COPY --from=builder --chown=nodejs:nodejs /app/package.json ./package.json
 
 # Copy node_modules for production dependencies only
 COPY --from=builder --chown=nodejs:nodejs /app/node_modules ./node_modules
-
-# Copy public directory if it exists
-RUN if [ -d /app/public ]; then \
-        mkdir -p public; \
-        cp -r /app/public/* ./public/; \
-    fi
 
 # Copy standalone build if available
 RUN if [ -d /app/.next/standalone ]; then \
