@@ -32,7 +32,7 @@ jobs:
       manifests-path: './k8s/overlays/prod'
       namespace: 'evenx-prod'
       wait-for-rollout: true
-      timeout: '300'
+      timeout: 300
       dry-run: false
     secrets:
       GKE_SA_KEY: ${{ secrets.GKE_SA_KEY }}
