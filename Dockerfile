@@ -17,7 +17,7 @@ RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
 # Copy package files
-COPY package.json yarn.lock* .yarnrc.yml .yarnrc* ./
+COPY package.json yarn.lock* ./
 
 # Setup Yarn based on version
 RUN if [ "$ENABLE_YARN_BERRY" = "true" ]; then \
@@ -56,7 +56,7 @@ RUN if ! grep -q '"standalone"' package.json; then \
 FROM base AS runner
 WORKDIR /app
 
-ENV NODE_ENV production
+ENV NODE_ENV=production
 
 # Create non-root user
 RUN addgroup --system --gid 1001 nodejs
@@ -98,8 +98,4 @@ EXPOSE ${PORT}
 
 # Start command - check if standalone build is available
 ARG START_COMMAND
-CMD if [ -f server.js ]; then \
-        node server.js; \
-    else \
-        ${START_COMMAND}; \
-    fi
+CMD ["sh", "-c", "if [ -f server.js ]; then node server.js; else ${START_COMMAND}; fi"]
