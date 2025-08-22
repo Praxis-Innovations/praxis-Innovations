@@ -1,7 +1,3 @@
-# Dedicated Dockerfile for Next.js applications
-# Optimized for Next.js with support for standalone builds and static exports
-# Uses Node.js runtime for Next.js server
-
 ARG NODE_VERSION=18
 ARG BUILD_OUTPUT_DIR=.next
 ARG PORT=3000
@@ -38,7 +34,13 @@ WORKDIR /app
 
 # Copy dependencies
 COPY --from=deps /app/node_modules ./node_modules
-COPY --from=deps /app/.yarn ./.yarn
+
+# Copy Yarn files only if using Yarn Berry
+ARG ENABLE_YARN_BERRY
+RUN if [ "$ENABLE_YARN_BERRY" = "true" ]; then \
+        mkdir -p .yarn; \
+        cp -r /app/.yarn ./.yarn; \
+    fi
 
 # Copy source code
 COPY . .
@@ -69,13 +71,6 @@ COPY --from=builder --chown=nodejs:nodejs /app/package.json ./package.json
 
 # Copy node_modules for production dependencies only
 COPY --from=builder --chown=nodejs:nodejs /app/node_modules ./node_modules
-
-# Copy Yarn files if using Yarn Berry
-ARG ENABLE_YARN_BERRY
-RUN if [ "$ENABLE_YARN_BERRY" = "true" ]; then \
-        mkdir -p .yarn; \
-        cp -r /app/.yarn ./.yarn; \
-    fi
 
 # Copy public directory if it exists
 RUN if [ -d /app/public ]; then \
