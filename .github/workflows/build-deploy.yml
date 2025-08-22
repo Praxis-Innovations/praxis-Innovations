@@ -18,7 +18,7 @@ jobs:
       dockerfile-path: './Dockerfile'
       docker-context: '.'
       registry: 'docker.io'
-      image-name: 'praxis-innovations-website'
+      image-name: 'praxis-innovations'
       port: '3000'
       yarn-version: '1.x'
       enable-yarn-berry: false
