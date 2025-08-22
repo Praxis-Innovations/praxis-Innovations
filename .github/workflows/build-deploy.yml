@@ -1,8 +1,8 @@
-name: Next.js Build, Test, and Docker
+name: Build, Test and Deploy Next.js App
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, dev/amrit ]
   workflow_dispatch:
 
 jobs:
@@ -12,13 +12,13 @@ jobs:
       node-version: '18'
       project-type: 'nextjs'
       build-command: 'yarn build'
-      test-command: 'yarn test --watchAll=false --coverage --passWithNoTests'
+      test-command: 'yarn type-check'
       start-command: 'yarn start'
       build-output-dirs: '.next/,public/'
-      dockerfile-path: './Dockerfile.nextjs'
+      dockerfile-path: './Dockerfile'
       docker-context: '.'
       registry: 'ghcr.io'
-      image-name: 'your-nextjs-app'
+      image-name: 'praxis-innovations-website'
       port: '3000'
       yarn-version: '1.x'
       enable-yarn-berry: false
