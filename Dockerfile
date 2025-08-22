@@ -67,8 +67,7 @@ RUN adduser --system --uid 1001 nodejs
 # Copy built application
 ARG BUILD_OUTPUT_DIR
 RUN if [ -n "$BUILD_OUTPUT_DIR" ]; then \
-        IFS=',' read -ra DIRS <<< "$BUILD_OUTPUT_DIR"; \
-        for dir in "${DIRS[@]}"; do \
+        echo "$BUILD_OUTPUT_DIR" | tr ',' '\n' | while read dir; do \
             if [ -d "/app/$dir" ]; then \
                 mkdir -p "./$dir"; \
                 cp -r "/app/$dir"/* "./$dir/"; \
