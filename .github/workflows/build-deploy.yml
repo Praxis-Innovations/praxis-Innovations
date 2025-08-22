@@ -24,3 +24,18 @@ jobs:
     secrets:
       DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
       DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+
+  deploy-to-k8s:
+    needs: build-and-docker
+    uses: Praxis-Innovations/github-actions/.github/workflows/k8s-deploy.yml@main
+    with:
+      manifests-path: './k8s/overlays/prod'
+      namespace: 'evenx-prod'
+      wait-for-rollout: true
+      timeout: '300'
+      dry-run: false
+    secrets:
+      GKE_SA_KEY: ${{ secrets.GKE_SA_KEY }}
+      GKE_CLUSTER_NAME: ${{ secrets.GKE_CLUSTER_NAME }}
+      GKE_CLUSTER_ZONE: ${{ secrets.GKE_CLUSTER_ZONE }}
+      GKE_PROJECT_ID: ${{ secrets.GKE_PROJECT_ID }}

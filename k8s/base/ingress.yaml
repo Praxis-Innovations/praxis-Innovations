@@ -1,0 +1,28 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: praxisinnovations-ingress
+  labels:
+    app: praxisinnovations
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/permanent-redirect: "https://$host$request_uri"
+spec:
+  tls:
+  - hosts:
+    - praxisinnovations.ca
+    secretName: praxisinnovations-tls
+  rules:
+  - host: praxisinnovations.ca
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: praxisinnovations-service
+            port:
+              number: 80
