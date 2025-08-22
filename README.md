@@ -1,70 +1,175 @@
-# Getting Started with Create React App
+# Praxis Innovations Website
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern, responsive website built with **Next.js**, TypeScript, and Styled Components.
 
-## Available Scripts
+## 🚀 Features
 
-In the project directory, you can run:
+- **Next.js 14** - React framework with server-side rendering
+- **TypeScript** - Type-safe development
+- **Styled Components** - CSS-in-JS styling
+- **Responsive Design** - Mobile-first approach
+- **Performance Optimized** - Built-in optimizations
 
-### `npm start`
+## 🛠️ Tech Stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Framework**: Next.js 14
+- **Language**: TypeScript
+- **Styling**: Styled Components
+- **Package Manager**: Yarn
+- **Deployment**: Docker + Kubernetes (GKE)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 📦 Installation
 
-### `npm test`
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd praxis-Innovations
+   ```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. **Install dependencies**
+   ```bash
+   yarn install
+   ```
 
-### `npm run build`
+3. **Run development server**
+   ```bash
+   yarn dev
+   ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+4. **Open your browser**
+   Navigate to [http://localhost:3000](http://localhost:3000)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 🚀 Available Scripts
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- `yarn dev` - Start development server
+- `yarn build` - Build for production
+- `yarn start` - Start production server
+- `yarn lint` - Run ESLint
+- `yarn type-check` - Run TypeScript type checking
 
-### `npm run eject`
+## 🐳 Docker
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Build the image
+```bash
+docker build -t praxis-innovations-website .
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Run locally
+```bash
+docker run -p 3000:3000 praxis-innovations-website
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Deploy script
+```bash
+# Local deployment
+./scripts/deploy.sh local
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+# GKE deployment
+./scripts/deploy.sh gke
+```
 
-## Learn More
+## ☸️ Kubernetes Deployment
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+The application includes Kubernetes manifests for deployment to GKE:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- **Deployment** - Application pods
+- **Service** - Load balancer
+- **Ingress** - External access with SSL
+- **HPA** - Auto-scaling
 
-### Code Splitting
+## 📁 Project Structure
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```
+├── pages/                 # Next.js pages
+│   ├── _app.tsx          # App wrapper
+│   ├── _document.tsx     # HTML document
+│   ├── index.tsx         # Home page
+│   ├── 404.tsx          # 404 error page
+│   └── 500.tsx          # 500 error page
+├── src/
+│   ├── components/       # Reusable components
+│   │   ├── layout/      # Layout components
+│   │   ├── sections/    # Page sections
+│   │   └── ui/          # UI components
+│   ├── constants/       # App constants
+│   ├── types/           # TypeScript types
+│   ├── assets/          # Static assets
+│   └── index.css        # Global styles
+├── public/               # Static files
+├── scripts/              # Deployment scripts
+├── Dockerfile            # Docker configuration
+├── next.config.js        # Next.js configuration
+└── tsconfig.json         # TypeScript configuration
+```
 
-### Analyzing the Bundle Size
+## 🔧 Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Next.js Config
+- **Standalone output** - Optimized for Docker
+- **Styled Components** - Server-side rendering support
+- **Image optimization** - Built-in image handling
 
-### Making a Progressive Web App
+### TypeScript Config
+- **Path aliases** - Clean imports with `@/` prefix
+- **Strict mode** - Enhanced type safety
+- **Next.js types** - Full framework support
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## 🚀 Deployment
 
-### Advanced Configuration
+### Local Development
+```bash
+yarn dev
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### Production Build
+```bash
+yarn build
+yarn start
+```
 
-### Deployment
+### Docker Deployment
+```bash
+./scripts/deploy.sh local
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### GKE Deployment
+```bash
+./scripts/deploy.sh gke
+```
 
-### `npm run build` fails to minify
+## 📱 Responsive Design
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+The website is fully responsive and optimized for:
+- **Desktop** - Full feature set
+- **Tablet** - Adaptive layout
+- **Mobile** - Touch-friendly interface
+
+## 🎨 Styling
+
+- **Styled Components** - Component-scoped styles
+- **CSS Variables** - Consistent design tokens
+- **Responsive Breakpoints** - Mobile-first approach
+- **Modern CSS Features** - Grid, Flexbox, CSS Variables
+
+## 🔍 Performance
+
+- **Next.js Optimizations** - Automatic code splitting
+- **Image Optimization** - WebP format support
+- **Bundle Analysis** - Built-in performance monitoring
+- **SEO Optimized** - Server-side rendering
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Run tests and linting
+5. Submit a pull request
+
+## 📄 License
+
+This project is private and proprietary to Praxis Innovations.
+
+## 🆘 Support
+
+For support and questions, please contact the development team.

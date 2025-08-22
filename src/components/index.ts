@@ -1,0 +1,9 @@
+export { default as About } from "./sections/About";
+export { default as Landing } from "./sections/Landing";
+export { default as Navbar } from "./layout/Navbar";
+export { default as Services } from "./sections/Services";
+export { default as Technology } from "./sections/Technology";
+export { default as Contact } from './sections/Contact';
+export { default as FormInfo } from "./ui/FormInfo";
+export { default as Error } from './ui/Error';
+export { default as Footer } from './layout/Footer';
