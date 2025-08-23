@@ -1,8 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  compiler: {
-    styledComponents: true,
-  },
   output: 'standalone', // Enable standalone output for Docker
   images: {
     domains: [],

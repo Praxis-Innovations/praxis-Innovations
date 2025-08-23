@@ -1,186 +1,118 @@
-import React, { useState, useEffect, useRef } from 'react';
-import styled from 'styled-components';
-import { NavLinks } from '../../constants/data';
-import { FaBars } from 'react-icons/fa';
+'use client';
 
-const NavbarHeader = styled.header`
-  ul {
-    list-style-type: none;
-  }
-  a {
-    text-decoration: none;
-  }
+import { useState, useEffect } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
 
-  /*
-=============== 
-Navbar
-===============
-*/
-  nav {
-    background: var(--light);
-    padding: var(--margin);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    position: fixed;
-    width: 100%;
-  }
-  .nav-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  .nav-center {
-    padding: 1rem 0;
-  }
-  .nav-toggle {
-    font-size: 1.5rem;
-    color: var(--heading);
-    background: transparent;
-    border-color: transparent;
-    transition: all 0.3s linear;
-    cursor: pointer;
-  }
-  .nav-toggle:hover {
-    color: #03befc;
-    transform: rotate(90deg);
-  }
-  .logo {
-    height: 40px;
-  }
-  .links a {
-    color: var(--heading);
-    font-size: 1rem;
-    text-transform: capitalize;
-    letter-spacing: 0.1rem;
-    display: block;
-    padding: 0.5rem 1rem;
-    transition: all 0.3s linear;
-  }
-  .links a:hover {
-    background: #dae8f2;
-    color: #03befc;
-    padding-left: 1.5rem;
-  }
-
-  .links-container {
-    height: 0;
-    overflow: hidden;
-    transition: all 0.3s linear;
-  }
-  .show-container {
-    height: 10rem;
-  }
-  @media screen and (min-width: 1000px) {
-    nav {
-      padding: 0 10%;
-    }
-    .nav-center {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .nav-toggle {
-      display: none;
-    }
-    .links-container {
-      height: auto !important;
-    }
-    .links {
-      display: flex;
-    }
-    .links a {
-      padding: 0;
-      margin: 0 0.5rem;
-    }
-    .links a:hover {
-      padding: 0;
-      background: transparent;
-    }
-  }
-`;
-
-const Navbar: React.FC = () => {
-  const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
-
-  // for container div
-  const linksContainerRef = useRef<HTMLDivElement>(null);
-
-  // for ul 
-  const linksRef = useRef<HTMLUListElement>(null);
+const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
-    // checks height of links in ul
-    const linksHeight = linksRef.current?.getBoundingClientRect().height;
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10);
+    };
 
-    if (isSidebarOpen && linksHeight !== undefined) {
-      // if navbar menu is open sets height of div = height of links in ul
-      // this will automatically set height of container if we add or remove links from ul
-      if (linksContainerRef.current) {
-        linksContainerRef.current.style.height = `${linksHeight}px`;
-      }
-    } else {
-      // if navbar menu is closed sets height of div = 0
-      if (linksContainerRef.current) {
-        linksContainerRef.current.style.height = '0px';
-      }
-    }
-  }, [isSidebarOpen]);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
-  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-
-    // get which link is clicked
-    const target = e.currentTarget.getAttribute('href');
-    if (!target) return;
-    
-    // this gives location of each section from navbar when clicked
-    const element = document.querySelector(target);
-    if (!element) return;
-    
-    const location = (element as HTMLElement).offsetTop;
-
-    // this method always places navbar on top of section with corresponding id or href.
-    window.scrollTo({
-      left: 0,
-      top: location - 80,
-    });
-
-    // automatically closes sidebar menu when clicked on menu links.
-    setIsSidebarOpen(!isSidebarOpen);
-  };
+  const navItems = [
+    { name: 'Home', href: '/' },
+    { name: 'About', href: '/about' },
+    { name: 'Services', href: '/services' },
+    { name: 'Portfolio', href: '/portfolio' },
+    { name: 'Contact', href: '/contact' },
+  ];
 
   return (
-    <NavbarHeader id='nav'>
-      <nav>
-        <div className="nav-center">
-          <div className='nav-header'>
-            <a href='#home'>
-              <img src='/nav-logo-.png' alt='logo' className='logo' />
-            </a>
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      isScrolled ? 'bg-white/95 backdrop-blur-md shadow-lg' : 'bg-transparent'
+    }`}>
+      <div className="container-custom">
+        <div className="flex items-center justify-between h-16 lg:h-20">
+          {/* Logo */}
+          <Link href="/" className="flex items-center space-x-2">
+            <div className="w-10 h-10 bg-gradient-to-br from-primary-600 to-accent-500 rounded-lg flex items-center justify-center">
+              <span className="text-white font-bold text-xl">P</span>
+            </div>
+            <span className="text-xl lg:text-2xl font-bold text-neutral-800">
+              Praxis Innovations
+            </span>
+          </Link>
 
-            <button
-              className='nav-toggle'
-              onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+          {/* Desktop Navigation */}
+          <div className="hidden lg:flex items-center space-x-8">
+            {navItems.map((item) => (
+              <Link
+                key={item.name}
+                href={item.href}
+                className="text-neutral-600 hover:text-primary-600 font-medium transition-colors duration-200"
+              >
+                {item.name}
+              </Link>
+            ))}
+            <Link href="/contact" className="btn-primary">
+              Work With Us
+            </Link>
+          </div>
+
+          {/* Mobile menu button */}
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="lg:hidden p-2 rounded-md text-neutral-600 hover:text-primary-600 hover:bg-neutral-100 transition-colors duration-200"
+          >
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
             >
-              <FaBars />
-            </button>
-          </div>
-
-          <div className='links-container' ref={linksContainerRef}>
-            <ul className='links' ref={linksRef}>
-              {NavLinks.map((link) => {
-                const { id, url, text } = link;
-                return (
-                  <li key={id}>
-                    <a href={url} onClick={handleClick}>{text}</a>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
+              {isOpen ? (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              ) : (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              )}
+            </svg>
+          </button>
         </div>
-      </nav>
-    </NavbarHeader>
+
+        {/* Mobile Navigation */}
+        {isOpen && (
+          <div className="lg:hidden bg-white border-t border-neutral-200">
+            <div className="px-4 py-6 space-y-4">
+              {navItems.map((item) => (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className="block text-neutral-600 hover:text-primary-600 font-medium py-2 transition-colors duration-200"
+                  onClick={() => setIsOpen(false)}
+                >
+                  {item.name}
+                </Link>
+              ))}
+              <Link
+                href="/contact"
+                className="btn-primary block text-center"
+                onClick={() => setIsOpen(false)}
+              >
+                Work With Us
+              </Link>
+            </div>
+          </div>
+        )}
+      </div>
+    </nav>
   );
 };
 

@@ -1,143 +1,258 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import FormInfo from '../ui/FormInfo';
+'use client';
 
-interface FormValues {
-  name: string;
-  email: string;
-  contactNumber: string;
-  msg: string;
-}
+import { useState } from 'react';
 
-const ContactSection = styled.section`
-  h3 {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-top: 3rem;
-    margin: var(--margin);
-    font-family: 'Roboto Condensed', Sans-Serif;
-    font-weight: 700;
-    line-height: 1.3;
-    text-transform: capitalize;
-    letter-spacing: 1px;
-    color: var(--white);
-  }
-  .section {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 4rem;
-    margin: var(--margin);
-    padding: 3rem 0;
-  }
-  form {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-  input, textarea {
-    padding: 1rem;
-    border: 1px solid var(--heading);
-    border-radius: 0.5rem;
-    background: var(--dark);
-    color: var(--white);
-    font-size: 1rem;
-  }
-  input::placeholder, textarea::placeholder {
-    color: var(--light);
-  }
-  textarea {
-    min-height: 120px;
-    resize: vertical;
-  }
-  .btn {
-    background: var(--heading);
-    color: var(--white);
-    padding: 1rem 2rem;
-    border: none;
-    border-radius: 0.5rem;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s linear;
-  }
-  .btn:hover {
-    background: var(--primary);
-    transform: translateY(-2px);
-  }
-  @media screen and (max-width: 1000px) {
-    .section {
-      grid-template-columns: 1fr;
-      grid-gap: 2rem;
-    }
-  }
-`;
-
-const Contact: React.FC = () => {
-  const [values, setValues] = useState<FormValues>({
+const Contact = () => {
+  const [formData, setFormData] = useState({
     name: '',
     email: '',
-    contactNumber: '',
-    msg: '',
+    company: '',
+    message: '',
+    budget: '',
+    timeline: ''
   });
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log(e);
+    setIsSubmitting(true);
+    
+    // Simulate form submission
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    
+    // Reset form
+    setFormData({
+      name: '',
+      email: '',
+      company: '',
+      message: '',
+      budget: '',
+      timeline: ''
+    });
+    
+    setIsSubmitting(false);
+    alert('Thank you for your message! We\'ll get back to you soon.');
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setValues({ ...values, [e.target.name]: e.target.value });
-  };
-  
+  const contactInfo = [
+    {
+      icon: '📧',
+      title: 'Email',
+      value: 'hello@praxisinnovations.com',
+      href: 'mailto:hello@praxisinnovations.com'
+    },
+    {
+      icon: '📱',
+      title: 'Phone',
+      value: '+1 (555) 123-4567',
+      href: 'tel:+15551234567'
+    },
+    {
+      icon: '📍',
+      title: 'Location',
+      value: 'San Francisco, CA',
+      href: '#'
+    }
+  ];
+
   return (
-    <ContactSection className='dark' id='contact'>
-      <h3>Contact</h3>
-      <div className='section'>
-        <FormInfo />
+    <section className="section-padding bg-white">
+      <div className="container-custom">
+        {/* Section Header */}
+        <div className="text-center mb-16">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-neutral-900 mb-6">
+            Let's{' '}
+            <span className="gradient-text">Work Together</span>
+          </h2>
+          <p className="text-lg text-neutral-600 max-w-3xl mx-auto">
+            Ready to start your next project? Get in touch with us and let's discuss 
+            how we can help bring your vision to life.
+          </p>
+        </div>
 
-        <form action='mailto:malhi.manjinder@outlook.com' method='POST' onSubmit={handleSubmit}>
-          {/* for name */}
-          <input
-            type='text'
-            name='name'
-            placeholder='Name'
-            value={values.name}
-            onChange={handleChange}
-          />
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+          {/* Contact Form */}
+          <div>
+            <h3 className="text-2xl font-bold text-neutral-900 mb-6">
+              Start a Project
+            </h3>
+            
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div>
+                  <label htmlFor="name" className="block text-sm font-medium text-neutral-700 mb-2">
+                    Full Name *
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200"
+                    placeholder="John Doe"
+                  />
+                </div>
+                
+                <div>
+                  <label htmlFor="email" className="block text-sm font-medium text-neutral-700 mb-2">
+                    Email *
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200"
+                    placeholder="john@company.com"
+                  />
+                </div>
+              </div>
 
-          {/* for email */}
-          <input
-            type='email'
-            name='email'
-            placeholder='E-mail'
-            value={values.email}
-            onChange={handleChange}
-          />
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div>
+                  <label htmlFor="company" className="block text-sm font-medium text-neutral-700 mb-2">
+                    Company
+                  </label>
+                  <input
+                    type="text"
+                    id="company"
+                    name="company"
+                    value={formData.company}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200"
+                    placeholder="Your Company"
+                  />
+                </div>
+                
+                <div>
+                  <label htmlFor="budget" className="block text-sm font-medium text-neutral-700 mb-2">
+                    Budget Range
+                  </label>
+                  <select
+                    id="budget"
+                    name="budget"
+                    value={formData.budget}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200"
+                  >
+                    <option value="">Select budget range</option>
+                    <option value="under-25k">Under $25K</option>
+                    <option value="25k-50k">$25K - $50K</option>
+                    <option value="50k-100k">$50K - $100K</option>
+                    <option value="100k-plus">$100K+</option>
+                  </select>
+                </div>
+              </div>
 
-          {/* for contact */}
-          <input
-            type='number'
-            name='contactNumber'
-            placeholder='(###) ###-#### contact number'
-            value={values.contactNumber}
-            onChange={handleChange}
-          />
+              <div>
+                <label htmlFor="timeline" className="block text-sm font-medium text-neutral-700 mb-2">
+                  Timeline
+                </label>
+                <select
+                  id="timeline"
+                  name="timeline"
+                  value={formData.timeline}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200"
+                >
+                  <option value="">Select timeline</option>
+                  <option value="asap">ASAP</option>
+                  <option value="1-3-months">1-3 months</option>
+                  <option value="3-6-months">3-6 months</option>
+                  <option value="6-plus-months">6+ months</option>
+                </select>
+              </div>
 
-          {/* for textarea */}
-          <textarea
-            name='msg'
-            placeholder='Your message here'
-            value={values.msg}
-            onChange={handleChange}
-          ></textarea>
+              <div>
+                <label htmlFor="message" className="block text-sm font-medium text-neutral-700 mb-2">
+                  Project Details *
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
+                  rows={5}
+                  className="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200"
+                  placeholder="Tell us about your project, goals, and requirements..."
+                />
+              </div>
 
-          <button className='btn' type='submit'>
-            SEND MESSAGE
-          </button>
-        </form>
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {isSubmitting ? 'Sending...' : 'Send Message'}
+              </button>
+            </form>
+          </div>
+
+          {/* Contact Information */}
+          <div>
+            <h3 className="text-2xl font-bold text-neutral-900 mb-6">
+              Get in Touch
+            </h3>
+            
+            <div className="space-y-6 mb-8">
+              {contactInfo.map((info) => (
+                <div key={info.title} className="flex items-start space-x-4">
+                  <div className="text-2xl">{info.icon}</div>
+                  <div>
+                    <h4 className="font-semibold text-neutral-900 mb-1">
+                      {info.title}
+                    </h4>
+                    <a
+                      href={info.href}
+                      className="text-neutral-600 hover:text-primary-600 transition-colors duration-200"
+                    >
+                      {info.value}
+                    </a>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="bg-gradient-to-r from-primary-50 to-accent-50 rounded-xl p-6">
+              <h4 className="font-semibold text-neutral-900 mb-3">
+                Why Choose Us?
+              </h4>
+              <ul className="space-y-2 text-sm text-neutral-600">
+                <li className="flex items-center">
+                  <span className="w-1.5 h-1.5 bg-accent-500 rounded-full mr-2"></span>
+                  Free consultation and project assessment
+                </li>
+                <li className="flex items-center">
+                  <span className="w-1.5 h-1.5 bg-accent-500 rounded-full mr-2"></span>
+                  Transparent pricing and timelines
+                </li>
+                <li className="flex items-center">
+                  <span className="w-1.5 h-1.5 bg-accent-500 rounded-full mr-2"></span>
+                  Ongoing support and maintenance
+                </li>
+                <li className="flex items-center">
+                  <span className="w-1.5 h-1.5 bg-accent-500 rounded-full mr-2"></span>
+                  Dedicated project manager
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
-    </ContactSection>
+    </section>
   );
 };
 

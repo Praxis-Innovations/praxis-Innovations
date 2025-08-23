@@ -1,74 +1,130 @@
-import React from 'react';
-import styled from 'styled-components';
-import { services } from '../../constants/data';
+import Link from 'next/link';
 
-const ServicesSection = styled.section`
-  h3 {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-top: 3rem;
-    margin: var(--margin);
-    font-family: 'Roboto Condensed', Sans-Serif;
-    font-weight: 700;
-    line-height: 1.3;
-    text-transform: capitalize;
-    letter-spacing: 1px;
-    color: var(--heading);
-  }
-  .container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    grid-gap: 2rem;
-    margin: var(--margin);
-    padding: 3rem 0;
-  }
-  article {
-    background: var(--white);
-    padding: 2rem;
-    border-radius: 0.5rem;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    transition: all 0.3s linear;
-  }
-  article:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-  }
-  span {
-    display: block;
-    margin-bottom: 1rem;
-  }
-  h5 {
-    color: var(--heading);
-    margin-bottom: 1rem;
-    font-size: 1.1rem;
-  }
-  p {
-    color: var(--text);
-    line-height: 1.6;
-  }
-`;
+const Services = () => {
+  const services = [
+    {
+      icon: '💻',
+      title: 'Software Development',
+      description: 'Custom web applications, mobile apps, and enterprise software built with modern technologies and best practices.',
+      features: ['React & Next.js', 'Node.js & Python', 'Mobile Apps', 'Cloud Solutions'],
+      href: '/services#software'
+    },
+    {
+      icon: '🎨',
+      title: 'UI/UX Design',
+      description: 'Beautiful, intuitive user experiences that delight users and drive engagement across all devices.',
+      features: ['User Research', 'Wireframing', 'Prototyping', 'Design Systems'],
+      href: '/services#design'
+    },
+    {
+      icon: '🚀',
+      title: 'Digital Transformation',
+      description: 'Modernize your business processes and technology stack to stay competitive in the digital age.',
+      features: ['Process Automation', 'Legacy Migration', 'Cloud Adoption', 'Data Strategy'],
+      href: '/services#transformation'
+    },
+    {
+      icon: '💡',
+      title: 'Consulting',
+      description: 'Strategic technology consulting to help you make informed decisions and achieve your business goals.',
+      features: ['Technology Strategy', 'Architecture Review', 'Team Augmentation', 'Project Management'],
+      href: '/services#consulting'
+    }
+  ];
 
-const Services: React.FC = () => {
   return (
-    <ServicesSection className='light' id='service'>
-      <h3>Services</h3>
-      <div className='container'>
-        {services.map((service, index) => {
-          const { icon, title, about } = service;
-          return (
-            <div key={index}>
-              <article>
-                <span>{icon}</span>
-                <h5>{title}</h5>
-                <p>{about}</p>
-              </article>
+    <section className="section-padding bg-white">
+      <div className="container-custom">
+        {/* Section Header */}
+        <div className="text-center mb-16">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-neutral-900 mb-6">
+            Our{' '}
+            <span className="gradient-text">Services</span>
+          </h2>
+          <p className="text-lg text-neutral-600 max-w-3xl mx-auto">
+            We offer comprehensive technology solutions to help your business grow, 
+            innovate, and stay ahead of the competition.
+          </p>
+        </div>
+
+        {/* Services Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+          {services.map((service, index) => (
+            <div
+              key={service.title}
+              className="group relative"
+              style={{ animationDelay: `${index * 0.1}s` }}
+            >
+              <div className="card group-hover:scale-105 transition-all duration-300 h-full">
+                {/* Icon */}
+                <div className="text-4xl mb-4">{service.icon}</div>
+                
+                {/* Title */}
+                <h3 className="text-xl font-semibold text-neutral-900 mb-3">
+                  {service.title}
+                </h3>
+                
+                {/* Description */}
+                <p className="text-neutral-600 mb-4 leading-relaxed">
+                  {service.description}
+                </p>
+                
+                {/* Features */}
+                <ul className="space-y-2 mb-6">
+                  {service.features.map((feature) => (
+                    <li key={feature} className="flex items-center text-sm text-neutral-600">
+                      <span className="w-1.5 h-1.5 bg-accent-500 rounded-full mr-2"></span>
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+                
+                {/* Learn More Link */}
+                <Link
+                  href={service.href}
+                  className="inline-flex items-center text-primary-600 hover:text-primary-700 font-medium group-hover:translate-x-1 transition-all duration-200"
+                >
+                  Learn More
+                  <svg
+                    className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform duration-200"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                </Link>
+              </div>
             </div>
-          );
-        })}
+          ))}
+        </div>
+
+        {/* CTA Section */}
+        <div className="text-center">
+          <div className="bg-gradient-to-r from-primary-50 to-accent-50 rounded-2xl p-8 lg:p-12">
+            <h3 className="text-2xl lg:text-3xl font-bold text-neutral-900 mb-4">
+              Ready to start your project?
+            </h3>
+            <p className="text-lg text-neutral-600 mb-6 max-w-2xl mx-auto">
+              Let's discuss how we can help you achieve your goals with our technology expertise.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link href="/contact" className="btn-primary">
+                Get Started
+              </Link>
+              <Link href="/portfolio" className="btn-outline">
+                View Portfolio
+              </Link>
+            </div>
+          </div>
+        </div>
       </div>
-    </ServicesSection>
+    </section>
   );
 };
 
