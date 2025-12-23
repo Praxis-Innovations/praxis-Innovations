@@ -6,29 +6,21 @@ const Services = () => {
       icon: '💻',
       title: 'Software Development',
       description: 'Custom web applications, mobile apps, and enterprise software built with modern technologies and best practices.',
-      features: ['React & Next.js', 'Node.js & Python', 'Mobile Apps', 'Cloud Solutions'],
-      href: '/services#software'
     },
     {
       icon: '🎨',
       title: 'UI/UX Design',
       description: 'Beautiful, intuitive user experiences that delight users and drive engagement across all devices.',
-      features: ['User Research', 'Wireframing', 'Prototyping', 'Design Systems'],
-      href: '/services#design'
     },
     {
       icon: '🚀',
       title: 'Digital Transformation',
       description: 'Modernize your business processes and technology stack to stay competitive in the digital age.',
-      features: ['Process Automation', 'Legacy Migration', 'Cloud Adoption', 'Data Strategy'],
-      href: '/services#transformation'
     },
     {
       icon: '💡',
       title: 'Consulting',
       description: 'Strategic technology consulting to help you make informed decisions and achieve your business goals.',
-      features: ['Technology Strategy', 'Architecture Review', 'Team Augmentation', 'Project Management'],
-      href: '/services#consulting'
     }
   ];
 
@@ -65,40 +57,9 @@ const Services = () => {
                 </h3>
                 
                 {/* Description */}
-                <p className="text-neutral-600 mb-4 leading-relaxed">
+                <p className="text-neutral-600 leading-relaxed">
                   {service.description}
                 </p>
-                
-                {/* Features */}
-                <ul className="space-y-2 mb-6">
-                  {service.features.map((feature) => (
-                    <li key={feature} className="flex items-center text-sm text-neutral-600">
-                      <span className="w-1.5 h-1.5 bg-accent-500 rounded-full mr-2"></span>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-                
-                {/* Learn More Link */}
-                <Link
-                  href={service.href}
-                  className="inline-flex items-center text-primary-600 hover:text-primary-700 font-medium group-hover:translate-x-1 transition-all duration-200"
-                >
-                  Learn More
-                  <svg
-                    className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform duration-200"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 5l7 7-7 7"
-                    />
-                  </svg>
-                </Link>
               </div>
             </div>
           ))}

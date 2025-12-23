@@ -1,13 +1,6 @@
 import Link from 'next/link';
 
 const About = () => {
-  const stats = [
-    { number: '100+', label: 'Projects Delivered' },
-    { number: '50+', label: 'Happy Clients' },
-    { number: '5+', label: 'Years Experience' },
-    { number: '24/7', label: 'Support Available' },
-  ];
-
   const values = [
     {
       icon: '🎯',
@@ -57,20 +50,6 @@ const About = () => {
               transform your ideas into powerful digital solutions that drive growth, efficiency, 
               and competitive advantage.
             </p>
-
-            {/* Stats */}
-            <div className="grid grid-cols-2 gap-6 mb-8">
-              {stats.map((stat) => (
-                <div key={stat.label} className="text-center">
-                  <div className="text-3xl font-bold text-primary-600 mb-2">
-                    {stat.number}
-                  </div>
-                  <div className="text-sm text-neutral-600">
-                    {stat.label}
-                  </div>
-                </div>
-              ))}
-            </div>
 
             <Link href="/about" className="btn-primary">
               Learn More About Us

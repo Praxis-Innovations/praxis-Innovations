@@ -2,7 +2,6 @@ import Layout from '../src/components/layout/Layout';
 import Hero from '../src/components/sections/Hero';
 import Services from '../src/components/sections/Services';
 import About from '../src/components/sections/About';
-import Technology from '../src/components/sections/Technology';
 import Contact from '../src/components/sections/Contact';
 
 export default function Home() {
@@ -15,7 +14,6 @@ export default function Home() {
       <Hero />
       <Services />
       <About />
-      <Technology />
       <Contact />
     </Layout>
   );
