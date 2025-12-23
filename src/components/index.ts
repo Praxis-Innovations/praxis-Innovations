@@ -7,5 +7,4 @@ export { default as Footer } from './layout/Footer';
 export { default as Hero } from './sections/Hero';
 export { default as Services } from './sections/Services';
 export { default as About } from './sections/About';
-export { default as Technology } from './sections/Technology';
 export { default as Contact } from './sections/Contact';
