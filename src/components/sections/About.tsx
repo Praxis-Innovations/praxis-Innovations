@@ -1,29 +1,7 @@
 import Link from 'next/link';
+import { values_content } from '@/content/marketing';
 
 const About = () => {
-  const values = [
-    {
-      icon: '🎯',
-      title: 'Innovation First',
-      description: 'We stay ahead of technology trends to deliver cutting-edge solutions.'
-    },
-    {
-      icon: '🤝',
-      title: 'Client Partnership',
-      description: 'We work closely with clients to understand their unique needs and goals.'
-    },
-    {
-      icon: '⚡',
-      title: 'Quality & Speed',
-      description: 'We deliver high-quality solutions quickly without compromising on excellence.'
-    },
-    {
-      icon: '🌱',
-      title: 'Continuous Growth',
-      description: 'We constantly learn and evolve to provide better solutions for our clients.'
-    }
-  ];
-
   return (
     <section className="section-padding bg-neutral-50">
       <div className="container-custom">
@@ -59,13 +37,13 @@ const About = () => {
           {/* Right Column - Values Grid */}
           <div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              {values.map((value, index) => (
+              {values_content.map((value, value_idx) => (
                 <div
-                  key={value.title}
-                  className="card group hover:scale-105 transition-all duration-300"
-                  style={{ animationDelay: `${index * 0.1}s` }}
+                  key={value.id}
+                  className="card text-center group hover:scale-105 transition-all duration-300"
+                  style={{ animationDelay: `${value_idx * 0.1}s` }}
                 >
-                  <div className="text-3xl mb-3">{value.icon}</div>
+                  <value.Icon className="h-8 w-8 text-primary-600 mb-3 mx-auto" aria-hidden />
                   <h3 className="text-lg font-semibold text-neutral-900 mb-2">
                     {value.title}
                   </h3>

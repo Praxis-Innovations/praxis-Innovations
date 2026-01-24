@@ -1,29 +1,7 @@
 import Link from 'next/link';
+import { services_content } from '@/content/marketing';
 
 const Services = () => {
-  const services = [
-    {
-      icon: '💻',
-      title: 'Software Development',
-      description: 'Custom web applications, mobile apps, and enterprise software built with modern technologies and best practices.',
-    },
-    {
-      icon: '🎨',
-      title: 'UI/UX Design',
-      description: 'Beautiful, intuitive user experiences that delight users and drive engagement across all devices.',
-    },
-    {
-      icon: '🚀',
-      title: 'Digital Transformation',
-      description: 'Modernize your business processes and technology stack to stay competitive in the digital age.',
-    },
-    {
-      icon: '💡',
-      title: 'Consulting',
-      description: 'Strategic technology consulting to help you make informed decisions and achieve your business goals.',
-    }
-  ];
-
   return (
     <section className="section-padding bg-white">
       <div className="container-custom">
@@ -41,15 +19,15 @@ const Services = () => {
 
         {/* Services Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-          {services.map((service, index) => (
+          {services_content.map((service, service_idx) => (
             <div
-              key={service.title}
+              key={service.id}
               className="group relative"
-              style={{ animationDelay: `${index * 0.1}s` }}
+              style={{ animationDelay: `${service_idx * 0.1}s` }}
             >
-              <div className="card group-hover:scale-105 transition-all duration-300 h-full">
+              <div className="card text-center group-hover:scale-105 transition-all duration-300 h-full">
                 {/* Icon */}
-                <div className="text-4xl mb-4">{service.icon}</div>
+                <service.Icon className="h-10 w-10 text-primary-600 mb-4 mx-auto" aria-hidden />
                 
                 {/* Title */}
                 <h3 className="text-xl font-semibold text-neutral-900 mb-3">

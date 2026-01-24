@@ -1,30 +1,8 @@
 import Layout from '../src/components/layout/Layout';
 import Link from 'next/link';
+import { values_content } from '@/content/marketing';
 
 export default function About() {
-  const values = [
-    {
-      icon: '🎯',
-      title: 'Innovation First',
-      description: 'We stay ahead of technology trends to deliver cutting-edge solutions that give our clients a competitive advantage.'
-    },
-    {
-      icon: '🤝',
-      title: 'Client Partnership',
-      description: 'We believe in building long-term relationships with our clients, working as an extension of their team.'
-    },
-    {
-      icon: '⚡',
-      title: 'Quality & Speed',
-      description: 'We deliver high-quality solutions quickly without compromising on excellence or cutting corners.'
-    },
-    {
-      icon: '🌱',
-      title: 'Continuous Growth',
-      description: 'We constantly learn, evolve, and improve to provide better solutions for our clients.'
-    }
-  ];
-
   return (
     <Layout
       title="About Us - Praxis Innovations"
@@ -98,13 +76,13 @@ export default function About() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {values.map((value, index) => (
+            {values_content.map((value, value_idx) => (
               <div
-                key={value.title}
+                key={value.id}
                 className="card text-center group hover:scale-105 transition-all duration-300"
-                style={{ animationDelay: `${index * 0.1}s` }}
+                style={{ animationDelay: `${value_idx * 0.1}s` }}
               >
-                <div className="text-4xl mb-4">{value.icon}</div>
+                <value.Icon className="h-10 w-10 text-primary-600 mb-4 mx-auto" aria-hidden />
                 <h3 className="text-xl font-semibold text-neutral-900 mb-3">
                   {value.title}
                 </h3>

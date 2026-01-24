@@ -1,5 +1,6 @@
 import Layout from '../src/components/layout/Layout';
 import Link from 'next/link';
+import ContactSection from '../src/components/sections/Contact';
 
 export default function Contact() {
   return (
@@ -23,54 +24,7 @@ export default function Contact() {
       </section>
 
       {/* Contact Section */}
-      <section className="section-padding bg-white">
-        <div className="container-custom">
-          <div className="max-w-2xl mx-auto text-center">
-            {/* Email Contact */}
-            <div className="bg-gradient-to-r from-primary-50 to-accent-50 rounded-2xl p-8 md:p-12">
-              <div className="text-5xl mb-6">📧</div>
-              <h2 className="text-3xl font-bold text-neutral-900 mb-4">
-                Get in Touch
-              </h2>
-              <p className="text-lg text-neutral-600 mb-8">
-                Drop us an email and we'll get back to you as soon as possible. 
-                We'd love to hear about your project ideas.
-              </p>
-              <a
-                href="mailto:info.praxisinnovations@gmail.com"
-                className="inline-flex items-center text-xl font-medium text-primary-600 hover:text-primary-700 transition-colors duration-200"
-              >
-                info.praxisinnovations@gmail.com
-              </a>
-            </div>
-
-            {/* Why Choose Us */}
-            <div className="mt-12 bg-white rounded-xl p-8 shadow-lg">
-              <h3 className="font-semibold text-neutral-900 mb-6 text-xl">
-                Why Choose Us?
-              </h3>
-              <ul className="space-y-3 text-neutral-600">
-                <li className="flex items-center justify-center">
-                  <span className="w-2 h-2 bg-accent-500 rounded-full mr-3"></span>
-                  Free consultation and project assessment
-                </li>
-                <li className="flex items-center justify-center">
-                  <span className="w-2 h-2 bg-accent-500 rounded-full mr-3"></span>
-                  Transparent pricing and timelines
-                </li>
-                <li className="flex items-center justify-center">
-                  <span className="w-2 h-2 bg-accent-500 rounded-full mr-3"></span>
-                  Ongoing support and maintenance
-                </li>
-                <li className="flex items-center justify-center">
-                  <span className="w-2 h-2 bg-accent-500 rounded-full mr-3"></span>
-                  Dedicated project manager
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
+      <ContactSection show_header={false} />
 
       {/* CTA */}
       <section className="section-padding bg-gradient-to-r from-primary-600 to-accent-600">

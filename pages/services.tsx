@@ -1,34 +1,8 @@
 import Layout from '../src/components/layout/Layout';
 import Link from 'next/link';
+import { services_content } from '@/content/marketing';
 
 export default function Services() {
-  const services = [
-    {
-      id: 'software',
-      icon: '💻',
-      title: 'Software Development',
-      description: 'Custom software solutions built with modern technologies and best practices.',
-    },
-    {
-      id: 'design',
-      icon: '🎨',
-      title: 'UI/UX Design',
-      description: 'Beautiful, intuitive user experiences that delight users and drive engagement.',
-    },
-    {
-      id: 'transformation',
-      icon: '🚀',
-      title: 'Digital Transformation',
-      description: 'Modernize your business processes and technology stack for the digital age.',
-    },
-    {
-      id: 'consulting',
-      icon: '💡',
-      title: 'Technology Consulting',
-      description: 'Strategic guidance to help you make informed technology decisions.',
-    }
-  ];
-
   return (
     <Layout
       title="Our Services - Praxis Innovations"
@@ -53,13 +27,13 @@ export default function Services() {
       <section className="section-padding bg-white">
         <div className="container-custom">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {services.map((service, index) => (
+            {services_content.map((service, service_idx) => (
               <div
                 key={service.id}
                 className="card text-center group hover:scale-105 transition-all duration-300"
-                style={{ animationDelay: `${index * 0.1}s` }}
+                style={{ animationDelay: `${service_idx * 0.1}s` }}
               >
-                <div className="text-4xl mb-4">{service.icon}</div>
+                <service.Icon className="h-10 w-10 text-primary-600 mb-4 mx-auto" aria-hidden />
                 <h3 className="text-xl font-semibold text-neutral-900 mb-3">
                   {service.title}
                 </h3>
