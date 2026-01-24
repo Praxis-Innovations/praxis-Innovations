@@ -32,9 +32,13 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
-            <div className="w-10 h-10 bg-gradient-to-br from-primary-600 to-accent-500 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-xl">P</span>
-            </div>
+            <Image
+              src="/icons/praxis-icon-64.png"
+              alt="Praxis Innovations logo"
+              width={40}
+              height={40}
+              priority
+            />
             <span className="text-xl lg:text-2xl font-bold text-neutral-800">
               Praxis Innovations
             </span>

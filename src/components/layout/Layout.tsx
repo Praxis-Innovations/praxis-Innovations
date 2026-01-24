@@ -22,7 +22,6 @@ const Layout = ({
         <title>{title}</title>
         <meta name="description" content={description} />
         <meta name="keywords" content={keywords} />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="robots" content="index, follow" />
         
         {/* Open Graph */}
@@ -35,10 +34,6 @@ const Layout = ({
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
-        
-        {/* Favicon */}
-        <link rel="icon" href="/favicon/favicon.ico" />
-        <link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png" />
         
         {/* Preconnect to external domains */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />

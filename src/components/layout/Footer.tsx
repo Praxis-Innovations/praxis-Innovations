@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -21,9 +22,12 @@ const Footer = () => {
             {/* Company Info */}
             <div>
               <div className="flex items-center space-x-2 mb-6">
-                <div className="w-10 h-10 bg-gradient-to-br from-primary-600 to-accent-500 rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-xl">P</span>
-                </div>
+                <Image
+                  src="/icons/praxis-icon-64.png"
+                  alt="Praxis Innovations logo"
+                  width={40}
+                  height={40}
+                />
                 <span className="text-xl font-bold">Praxis Innovations</span>
               </div>
               <p className="text-neutral-300 mb-6 max-w-md">
