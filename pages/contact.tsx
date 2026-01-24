@@ -11,7 +11,7 @@ export default function Contact() {
     >
       {/* Hero Section */}
       <section className="pt-32 pb-16 bg-gradient-to-br from-primary-50 to-accent-50">
-        <div className="container-custom text-center">
+        <div className="container-custom container-padding text-center">
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-neutral-900 mb-6">
             Let's{' '}
             <span className="gradient-text">Work Together</span>
@@ -36,7 +36,7 @@ export default function Contact() {
             Explore our services to see how we can help you achieve your technology goals.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/services" className="bg-white text-primary-600 hover:bg-neutral-100 font-medium px-8 py-3 rounded-lg transition-all duration-300">
+            <Link href="/services" className="bg-white text-primary-600 hover:bg-neutral-100 font-medium text-sm px-5 py-2.5 sm:text-base sm:px-8 sm:py-3 rounded-lg transition-all duration-300">
               Explore Services
             </Link>
             <Link href="/portfolio" className="border-2 border-white text-white hover:bg-white hover:text-primary-600 font-medium px-8 py-3 rounded-lg transition-all duration-300">

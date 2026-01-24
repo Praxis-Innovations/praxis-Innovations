@@ -19,7 +19,7 @@ export default function Portfolio() {
     >
       {/* Combined Hero + Project Section */}
       <section className="pt-28 pb-12 bg-gradient-to-br from-primary-50 to-accent-50 min-h-[calc(100vh-80px)]">
-        <div className="container-custom">
+        <div className="container-custom container-padding">
           {/* Header */}
           <div className="text-center mb-8">
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-neutral-900 mb-3">
@@ -53,7 +53,7 @@ export default function Portfolio() {
               <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
                   {/* Logo Side */}
-                  <div className="bg-gradient-to-br from-primary-500 to-accent-500 p-8 md:p-12 flex items-center justify-center">
+                  <div className="bg-neutral-50 p-8 md:p-12 flex items-center justify-center border-b md:border-b-0 md:border-r border-neutral-200">
                     <Image
                       src="/evenx-logo.png"
                       alt="EvenX Logo"
@@ -95,7 +95,7 @@ export default function Portfolio() {
 
       {/* CTA */}
       <section className="py-16 bg-gradient-to-r from-primary-600 to-accent-600">
-        <div className="container-custom text-center">
+        <div className="container-custom container-padding text-center">
           <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">
             Have a Project in Mind?
           </h2>
@@ -104,10 +104,10 @@ export default function Portfolio() {
             with innovative technology solutions.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact" className="bg-white text-primary-600 hover:bg-neutral-100 font-medium px-8 py-3 rounded-lg transition-all duration-300">
+            <Link href="/contact" className="bg-white text-primary-600 hover:bg-neutral-100 font-medium text-sm px-5 py-2.5 sm:text-base sm:px-8 sm:py-3 rounded-lg transition-all duration-300">
               Get in Touch
             </Link>
-            <Link href="/services" className="border-2 border-white text-white hover:bg-white hover:text-primary-600 font-medium px-8 py-3 rounded-lg transition-all duration-300">
+            <Link href="/services" className="border-2 border-white text-white hover:bg-white hover:text-primary-600 font-medium text-sm px-5 py-2.5 sm:text-base sm:px-8 sm:py-3 rounded-lg transition-all duration-300">
               Explore Services
             </Link>
           </div>

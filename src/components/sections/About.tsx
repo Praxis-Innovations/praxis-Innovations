@@ -7,7 +7,7 @@ const About = () => {
       <div className="container-custom">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left Column - Content */}
-          <div>
+          <div className="text-center lg:text-left">
             <div className="inline-flex items-center px-4 py-2 bg-primary-100 text-primary-700 rounded-full text-sm font-medium mb-6">
               About Us
             </div>
@@ -29,9 +29,11 @@ const About = () => {
               and competitive advantage.
             </p>
 
-            <Link href="/about" className="btn-primary">
-              Learn More About Us
-            </Link>
+            <div className="flex justify-center lg:justify-start">
+              <Link href="/about" className="btn-primary">
+                Learn More About Us
+              </Link>
+            </div>
           </div>
 
           {/* Right Column - Values Grid */}

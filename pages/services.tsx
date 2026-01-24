@@ -11,7 +11,7 @@ export default function Services() {
     >
       {/* Hero Section */}
       <section className="pt-32 pb-16 bg-gradient-to-br from-primary-50 to-accent-50">
-        <div className="container-custom text-center">
+        <div className="container-custom container-padding text-center">
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-neutral-900 mb-6">
             Our{' '}
             <span className="gradient-text">Services</span>

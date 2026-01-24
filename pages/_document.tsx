@@ -6,7 +6,6 @@ export default function Document() {
     <Html lang="en">
       <Head>
         <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="google-site-verification" content="div7rYz0HLsnnDAzySJpmtg_KVXUgRN527q-05CdVnY" />
         <Favicons />
       </Head>

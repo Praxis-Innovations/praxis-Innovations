@@ -28,7 +28,7 @@ const Navbar = () => {
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       isScrolled ? 'bg-white/95 backdrop-blur-md shadow-lg' : 'bg-transparent'
     }`}>
-      <div className="container-custom">
+      <div className="container-custom container-padding">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
@@ -93,12 +93,12 @@ const Navbar = () => {
         {/* Mobile Navigation */}
         {isOpen && (
           <div className="lg:hidden bg-white border-t border-neutral-200">
-            <div className="px-4 py-6 space-y-4">
+            <div className="container-padding py-6 space-y-4 text-center flex flex-col items-center">
               {navItems.map((item) => (
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="block text-neutral-600 hover:text-primary-600 font-medium py-2 transition-colors duration-200"
+                  className="w-full max-w-xs block text-neutral-600 hover:text-primary-600 font-medium py-2 transition-colors duration-200"
                   onClick={() => setIsOpen(false)}
                 >
                   {item.name}
@@ -106,7 +106,7 @@ const Navbar = () => {
               ))}
               <Link
                 href="/contact"
-                className="btn-primary block text-center"
+                className="btn-primary block text-center w-full max-w-xs text-sm px-5 py-2.5 sm:text-base sm:px-6 sm:py-3"
                 onClick={() => setIsOpen(false)}
               >
                 Work With Us

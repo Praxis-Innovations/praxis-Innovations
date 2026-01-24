@@ -31,7 +31,7 @@ const Hero = () => {
         }`} style={{ animationDelay: '1s' }}></div>
       </div>
 
-      <div className="container-custom relative z-10 text-center">
+      <div className="container-custom container-padding relative z-10 text-center">
         <div className={`transition-all duration-1000 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
         }`}>

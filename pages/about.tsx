@@ -11,7 +11,7 @@ export default function About() {
     >
       {/* Hero Section */}
       <section className="pt-32 pb-16 bg-gradient-to-br from-primary-50 to-accent-50">
-        <div className="container-custom text-center">
+        <div className="container-custom container-padding text-center">
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-neutral-900 mb-6">
             About{' '}
             <span className="gradient-text">Praxis Innovations</span>
@@ -27,31 +27,31 @@ export default function About() {
       <section className="section-padding bg-white">
         <div className="container-custom">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <div>
+            <div className="text-center lg:text-left">
               <h2 className="text-3xl sm:text-4xl font-bold text-neutral-900 mb-6">
                 Our Mission
               </h2>
-              <p className="text-lg text-neutral-600 mb-6 leading-relaxed">
+              <p className="text-lg text-neutral-600 mb-6 leading-relaxed max-w-xl mx-auto lg:mx-0">
                 To empower businesses with innovative technology solutions that drive growth, 
                 efficiency, and competitive advantage. We believe that every company deserves 
                 access to world-class technology that helps them achieve their goals.
               </p>
-              <p className="text-lg text-neutral-600 leading-relaxed">
+              <p className="text-lg text-neutral-600 leading-relaxed max-w-xl mx-auto lg:mx-0">
                 As a startup, we bring fresh perspectives and agility to every project. 
-                We're not bogged down by bureaucracy—we move fast, iterate quickly, 
+                We're not bogged down by bureaucracy. We move fast, iterate quickly, 
                 and deliver real value.
               </p>
             </div>
-            <div>
+            <div className="text-center lg:text-left">
               <h2 className="text-3xl sm:text-4xl font-bold text-neutral-900 mb-6">
                 Our Vision
               </h2>
-              <p className="text-lg text-neutral-600 mb-6 leading-relaxed">
+              <p className="text-lg text-neutral-600 mb-6 leading-relaxed max-w-xl mx-auto lg:mx-0">
                 To become a trusted technology partner for ambitious companies, 
                 known for our innovative solutions, exceptional quality, and genuine 
                 commitment to client success.
               </p>
-              <p className="text-lg text-neutral-600 leading-relaxed">
+              <p className="text-lg text-neutral-600 leading-relaxed max-w-xl mx-auto lg:mx-0">
                 We're at the beginning of our journey, but we're driven by a clear 
                 purpose: to build technology that makes a real difference for the 
                 businesses we work with.
@@ -106,7 +106,7 @@ export default function About() {
             bring your ideas to life.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact" className="bg-white text-primary-600 hover:bg-neutral-100 font-medium px-8 py-3 rounded-lg transition-all duration-300">
+            <Link href="/contact" className="bg-white text-primary-600 hover:bg-neutral-100 font-medium text-sm px-5 py-2.5 sm:text-base sm:px-8 sm:py-3 rounded-lg transition-all duration-300">
               Get in Touch
             </Link>
             <Link href="/services" className="border-2 border-white text-white hover:bg-white hover:text-primary-600 font-medium px-8 py-3 rounded-lg transition-all duration-300">

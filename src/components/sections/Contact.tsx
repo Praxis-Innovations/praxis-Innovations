@@ -69,7 +69,7 @@ const Contact = ({
 
                   <div className="inline-flex items-center gap-2 text-sm text-neutral-600">
                     <Clock className="w-4 h-4 text-neutral-500" aria-hidden="true" />
-                    Typical response: 24–48 hours
+                    Typical response: 24 to 48 hours
                   </div>
                 </div>
               </div>
