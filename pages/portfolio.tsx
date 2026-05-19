@@ -2,20 +2,71 @@ import Layout from '../src/components/layout/Layout';
 import Link from 'next/link';
 import Image from 'next/image';
 
-export default function Portfolio() {
-  const project = {
+type PortfolioProject = {
+  title: string;
+  category: string;
+  description: string;
+  website: string;
+  cta: string;
+  logo?: {
+    src: string;
+    alt: string;
+    width: number;
+    height: number;
+  };
+  screenshots?: {
+    src: string;
+    alt: string;
+  }[];
+};
+
+const projects: PortfolioProject[] = [
+  {
     title: 'EvenX',
     category: 'Mobile Application',
-    description: 'An intuitive expense splitting app that makes sharing costs with friends, roommates, and groups effortless. EvenX simplifies group finances so you can focus on what matters.',
+    description:
+      'An intuitive expense splitting app that makes sharing costs with friends, roommates, and groups effortless. EvenX simplifies group finances so you can focus on what matters.',
     website: 'https://evenx.io/',
-    isPlaceholder: false
-  };
+    cta: 'Visit EvenX',
+    logo: {
+      src: '/evenx-logo.png',
+      alt: 'EvenX Logo',
+      width: 200,
+      height: 200,
+    },
+  },
+  {
+    title: 'PlaySequence',
+    category: 'Real-Time Multiplayer Game',
+    description:
+      'A cross-platform Sequence experience with real-time multiplayer, private rooms, bot matches, leaderboards, coin rewards, tournaments, and classic rules validated by an authoritative game server.',
+    website: 'https://playsequence.app/',
+    cta: 'Visit PlaySequence',
+    logo: {
+      src: '/playsequence/sequence-logo.png',
+      alt: 'PlaySequence Logo',
+      width: 260,
+      height: 170,
+    },
+    screenshots: [
+      {
+        src: '/playsequence/game-board.webp',
+        alt: 'PlaySequence game board screen',
+      },
+      {
+        src: '/playsequence/main-menu.webp',
+        alt: 'PlaySequence main menu screen',
+      },
+    ],
+  },
+];
 
+export default function Portfolio() {
   return (
     <Layout
       title="Our Portfolio - Praxis Innovations"
-      description="Explore our work and see how we help clients achieve their technology goals."
-      keywords="portfolio, projects, software development, web applications"
+      description="Explore our work, including EvenX and PlaySequence, and see how we help clients achieve their technology goals."
+      keywords="portfolio, projects, software development, web applications, mobile applications, multiplayer games"
     >
       {/* Combined Hero + Project Section */}
       <section className="pt-28 pb-12 bg-gradient-to-br from-primary-50 to-accent-50 min-h-[calc(100vh-80px)]">
@@ -31,39 +82,55 @@ export default function Portfolio() {
             </p>
           </div>
 
-          {project.isPlaceholder ? (
-            // Placeholder state
-            <div className="max-w-xl mx-auto text-center">
-              <div className="bg-white rounded-2xl p-10 shadow-lg">
-                <div className="text-5xl mb-4">🚀</div>
-                <h2 className="text-2xl font-bold text-neutral-900 mb-3">
-                  Coming Soon
-                </h2>
-                <p className="text-neutral-600 mb-6">
-                  We're currently working on exciting projects.
-                </p>
-                <Link href="/contact" className="btn-primary inline-block">
-                  Start a Project With Us
-                </Link>
-              </div>
-            </div>
-          ) : (
-            // EvenX project - horizontal layout
-            <div className="max-w-5xl mx-auto">
-              <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
+          <div className="max-w-5xl mx-auto space-y-8">
+            {projects.map((project, project_idx) => (
+              <div key={project.title} className="bg-white rounded-2xl shadow-lg overflow-hidden">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
-                  {/* Logo Side */}
                   <div className="bg-neutral-50 p-8 md:p-12 flex items-center justify-center border-b md:border-b-0 md:border-r border-neutral-200">
-                    <Image
-                      src="/evenx-logo.png"
-                      alt="EvenX Logo"
-                      width={200}
-                      height={200}
-                      className="object-contain"
-                    />
+                    {project.screenshots ? (
+                      <div className="relative h-72 w-full max-w-xs overflow-hidden sm:h-80 sm:max-w-sm">
+                        <div className="absolute left-3 top-4 h-[82%] w-[38%] overflow-hidden rounded-2xl border border-neutral-200 bg-neutral-900 shadow-xl">
+                          <Image
+                            src={project.screenshots[0].src}
+                            alt={project.screenshots[0].alt}
+                            width={768}
+                            height={1662}
+                            className="h-full w-full object-contain"
+                          />
+                        </div>
+                        <div className="absolute right-3 bottom-4 h-[82%] w-[38%] overflow-hidden rounded-2xl border border-neutral-200 bg-neutral-900 shadow-xl">
+                          <Image
+                            src={project.screenshots[1].src}
+                            alt={project.screenshots[1].alt}
+                            width={768}
+                            height={1662}
+                            className="h-full w-full object-contain"
+                          />
+                        </div>
+                        {project.logo ? (
+                          <div className="absolute left-1/2 top-1/2 w-36 -translate-x-1/2 -translate-y-1/2 rounded-xl bg-white/95 p-3 shadow-lg sm:w-44 sm:p-4">
+                            <Image
+                              src={project.logo.src}
+                              alt={project.logo.alt}
+                              width={project.logo.width}
+                              height={project.logo.height}
+                              className="h-auto w-full object-contain"
+                            />
+                          </div>
+                        ) : null}
+                      </div>
+                    ) : project.logo ? (
+                      <Image
+                        src={project.logo.src}
+                        alt={project.logo.alt}
+                        width={project.logo.width}
+                        height={project.logo.height}
+                        className="object-contain"
+                        priority={project_idx === 0}
+                      />
+                    ) : null}
                   </div>
-                  
-                  {/* Content Side */}
+
                   <div className="p-8 md:p-10 flex flex-col justify-center">
                     <span className="inline-block px-3 py-1 bg-primary-100 text-primary-700 rounded-full text-sm font-medium w-fit mb-4">
                       {project.category}
@@ -80,7 +147,7 @@ export default function Portfolio() {
                       rel="noopener noreferrer"
                       className="btn-primary inline-flex items-center w-fit"
                     >
-                      Visit EvenX
+                      {project.cta}
                       <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                       </svg>
@@ -88,8 +155,8 @@ export default function Portfolio() {
                   </div>
                 </div>
               </div>
-            </div>
-          )}
+            ))}
+          </div>
         </div>
       </section>
 
