@@ -8,14 +8,22 @@ interface LayoutProps {
   title?: string;
   description?: string;
   keywords?: string;
+  canonicalUrl?: string;
 }
+
+const canonicalBase = 'https://praxisinnovations.ca';
 
 const Layout = ({ 
   children, 
   title = 'Praxis Innovations - Modern Software Solutions',
   description = 'We build modern software for ambitious companies. Expert software development, UI/UX design, and digital transformation consulting.',
-  keywords = 'software development, web development, mobile apps, UI/UX design, digital transformation, consulting'
+  keywords = 'software development, web development, mobile apps, UI/UX design, digital transformation, consulting',
+  canonicalUrl = canonicalBase
 }: LayoutProps) => {
+  const resolvedCanonicalUrl = canonicalUrl.startsWith('http')
+    ? canonicalUrl
+    : `${canonicalBase}${canonicalUrl}`;
+
   return (
     <>
       <Head>
@@ -23,17 +31,20 @@ const Layout = ({
         <meta name="description" content={description} />
         <meta name="keywords" content={keywords} />
         <meta name="robots" content="index, follow" />
+        <link rel="canonical" href={resolvedCanonicalUrl} />
         
         {/* Open Graph */}
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="Praxis Innovations" />
+        <meta property="og:url" content={resolvedCanonicalUrl} />
         
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
+        <meta name="twitter:url" content={resolvedCanonicalUrl} />
         
         {/* Preconnect to external domains */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />

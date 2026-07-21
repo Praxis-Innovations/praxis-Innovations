@@ -8,6 +8,7 @@ export default function Contact() {
       title="Contact Us - Praxis Innovations"
       description="Get in touch with Praxis Innovations to discuss your project requirements. We're here to help bring your technology vision to life."
       keywords="contact, get quote, project inquiry, software development, consultation"
+      canonicalUrl="https://praxisinnovations.ca/contact"
     >
       {/* Hero Section */}
       <section className="pt-32 pb-16 bg-gradient-to-br from-primary-50 to-accent-50">

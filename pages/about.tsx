@@ -8,6 +8,7 @@ export default function About() {
       title="About Us - Praxis Innovations"
       description="Learn about Praxis Innovations, our mission, values, and commitment to building modern software solutions."
       keywords="about us, mission, values, software company, startup"
+      canonicalUrl="https://praxisinnovations.ca/about"
     >
       {/* Hero Section */}
       <section className="pt-32 pb-16 bg-gradient-to-br from-primary-50 to-accent-50">

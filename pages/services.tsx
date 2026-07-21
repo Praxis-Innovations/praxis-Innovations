@@ -8,6 +8,7 @@ export default function Services() {
       title="Our Services - Praxis Innovations"
       description="Comprehensive software development, UI/UX design, digital transformation, and technology consulting services to help your business grow."
       keywords="software development, web development, mobile apps, UI/UX design, digital transformation, technology consulting"
+      canonicalUrl="https://praxisinnovations.ca/services"
     >
       {/* Hero Section */}
       <section className="pt-32 pb-16 bg-gradient-to-br from-primary-50 to-accent-50">

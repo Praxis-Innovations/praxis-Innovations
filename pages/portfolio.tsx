@@ -67,6 +67,7 @@ export default function Portfolio() {
       title="Our Portfolio - Praxis Innovations"
       description="Explore our work, including EvenX and PlaySequence, and see how we help clients achieve their technology goals."
       keywords="portfolio, projects, software development, web applications, mobile applications, multiplayer games"
+      canonicalUrl="https://praxisinnovations.ca/portfolio"
     >
       {/* Combined Hero + Project Section */}
       <section className="pt-28 pb-12 bg-gradient-to-br from-primary-50 to-accent-50 min-h-[calc(100vh-80px)]">

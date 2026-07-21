@@ -10,6 +10,7 @@ export default function Home() {
       title="Praxis Innovations - Modern Software Solutions"
       description="We build modern software for ambitious companies. Expert software development, UI/UX design, and digital transformation consulting."
       keywords="software development, web development, mobile apps, UI/UX design, digital transformation, consulting"
+      canonicalUrl="https://praxisinnovations.ca/"
     >
       <Hero />
       <Services />
