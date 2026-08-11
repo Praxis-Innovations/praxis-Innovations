@@ -36,6 +36,20 @@ const projects: PortfolioProject[] = [
     },
   },
   {
+    title: "Liar's Dice",
+    category: 'Online Strategy Game',
+    description:
+      'A free browser-based Liar\'s Dice game where you bluff, bid, and challenge AI opponents. Features multiple rule variants including Dudo and Perudo, strategy guides, and no sign-up required.',
+    website: 'https://liars-dice.app/',
+    cta: "Visit Liar's Dice",
+    logo: {
+      src: '/liarsdice/liarsdice-logo.png',
+      alt: "Liar's Dice Logo",
+      width: 200,
+      height: 200,
+    },
+  },
+  {
     title: 'PlaySequence',
     category: 'Real-Time Multiplayer Game',
     description:
@@ -65,8 +79,8 @@ export default function Portfolio() {
   return (
     <Layout
       title="Our Portfolio - Praxis Innovations"
-      description="Explore our work, including EvenX and PlaySequence, and see how we help clients achieve their technology goals."
-      keywords="portfolio, projects, software development, web applications, mobile applications, multiplayer games"
+      description="Explore our work, including EvenX, Liar's Dice, and PlaySequence, and see how we help clients achieve their technology goals."
+      keywords="portfolio, projects, software development, web applications, mobile applications, multiplayer games, expense splitting, dice game, sequence game"
       canonicalUrl="https://praxisinnovations.ca/portfolio"
     >
       {/* Combined Hero + Project Section */}
