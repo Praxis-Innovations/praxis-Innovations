@@ -1,0 +1,23 @@
+# Praxis Innovations
+
+> Software studio building mobile apps and online games. Based in Brampton, Ontario, Canada.
+
+Praxis Innovations Inc. designs and builds consumer software products — mobile apps and browser-based games. Our current portfolio includes EvenX (expense splitting), Liar's Dice (online bluffing game), and PlaySequence (multiplayer Sequence card game).
+
+## Company
+
+- [Home](https://praxisinnovations.ca/): Company overview and mission
+- [About](https://praxisinnovations.ca/about): Team and values
+- [Services](https://praxisinnovations.ca/services): What we build and how we work
+- [Portfolio](https://praxisinnovations.ca/portfolio): Product showcase — EvenX, Liar's Dice, PlaySequence
+- [Contact](https://praxisinnovations.ca/contact): Get in touch
+
+## Products
+
+- [EvenX](https://evenx.io/): Expense splitting app for iOS and Android
+- [Liar's Dice](https://liars-dice.app/): Free browser-based Liar's Dice game against AI
+- [PlaySequence](https://playsequence.app/): Cross-platform multiplayer Sequence card game
+
+## Optional
+
+- [Sitemap](https://praxisinnovations.ca/sitemap.xml): Machine-readable list of public URLs
