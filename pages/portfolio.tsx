@@ -25,12 +25,12 @@ export default function Portfolio() {
   const hero = useInView();
   const evenx = useInView();
   const liarsdice = useInView();
-  const sequence = useInView();
+  const alignfive = useInView();
 
   return (
     <Layout
       title="Our Portfolio - Praxis Innovations"
-      description="Explore our work, including EvenX, Liar's Dice, and PlaySequence, and see how we help clients achieve their technology goals."
+      description="Explore our work, including EvenX, Liar's Dice, and AlignFive, and see how we help clients achieve their technology goals."
       keywords="portfolio, projects, software development, web applications, mobile applications, multiplayer games, expense splitting, dice game, sequence game"
       canonicalUrl="https://praxisinnovations.ca/portfolio"
     >
@@ -58,7 +58,7 @@ export default function Portfolio() {
             is designed to be simple, polished, and delightful.
           </p>
           <div className="flex justify-center gap-3 mt-8">
-            {['EvenX', "Liar's Dice", 'PlaySequence'].map((name, i) => (
+            {['EvenX', "Liar's Dice", 'AlignFive'].map((name, i) => (
               <a
                 key={name}
                 href={`#product-${i}`}
@@ -201,43 +201,34 @@ export default function Portfolio() {
         </div>
       </section>
 
-      {/* PlaySequence */}
+      {/* AlignFive */}
       <section id="product-2" className="relative py-24 overflow-hidden bg-gradient-to-br from-neutral-800 via-neutral-900 to-emerald-900/30">
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-emerald-500/10 rounded-full blur-[120px]" />
         <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-amber-500/10 rounded-full blur-[100px]" />
         <div
-          ref={sequence.ref}
-          className={`container-custom container-padding relative z-10 transition-all duration-1000 ${sequence.inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+          ref={alignfive.ref}
+          className={`container-custom container-padding relative z-10 transition-all duration-1000 ${alignfive.inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
         >
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div className="flex justify-center lg:order-2">
               <div className="relative h-80 w-full max-w-sm">
-                {/* Phone mockups */}
-                <div className="absolute left-4 top-4 h-[85%] w-[40%] overflow-hidden rounded-2xl border border-white/10 bg-neutral-900 shadow-2xl ring-1 ring-white/5">
+                {/* Phone mockup */}
+                <div className="absolute left-1/2 top-1/2 h-[95%] w-[45%] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-2xl border border-white/10 bg-neutral-900 shadow-2xl ring-1 ring-white/5">
                   <Image
-                    src="/playsequence/game-board.webp"
-                    alt="PlaySequence game board"
+                    src="/alignfive/game-board.webp"
+                    alt="AlignFive game board"
                     width={768}
                     height={1662}
                     className="h-full w-full object-contain"
                   />
                 </div>
-                <div className="absolute right-4 bottom-4 h-[85%] w-[40%] overflow-hidden rounded-2xl border border-white/10 bg-neutral-900 shadow-2xl ring-1 ring-white/5">
+                <div className="absolute right-4 top-1/2 -translate-y-1/2 rounded-xl bg-white/95 backdrop-blur-sm p-3 shadow-2xl sm:p-4 z-10">
                   <Image
-                    src="/playsequence/main-menu.webp"
-                    alt="PlaySequence main menu"
-                    width={768}
-                    height={1662}
-                    className="h-full w-full object-contain"
-                  />
-                </div>
-                <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-xl bg-white/95 backdrop-blur-sm p-3 shadow-2xl sm:p-4 z-10">
-                  <Image
-                    src="/playsequence/sequence-logo.png"
-                    alt="PlaySequence Logo"
+                    src="/alignfive/alignfive-logo.png"
+                    alt="AlignFive logo"
                     width={260}
                     height={170}
-                    className="h-auto w-32 sm:w-40 object-contain"
+                    className="h-auto w-24 sm:w-32 object-contain"
                   />
                 </div>
               </div>
@@ -247,7 +238,7 @@ export default function Portfolio() {
                 Real-Time Multiplayer Game
               </span>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4 leading-tight">
-                PlaySequence
+                AlignFive
               </h2>
               <p className="text-lg text-neutral-300 leading-relaxed mb-8">
                 A cross-platform Sequence experience with real-time multiplayer, private rooms,
@@ -262,12 +253,12 @@ export default function Portfolio() {
                 ))}
               </div>
               <a
-                href="https://playsequence.app/"
+                href="https://alignfive.app"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white font-medium px-6 py-3 rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg"
               >
-                Visit PlaySequence
+                Visit AlignFive
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                 </svg>
