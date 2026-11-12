@@ -31,7 +31,7 @@ export default function Portfolio() {
     <Layout
       title="Our Portfolio - Praxis Innovations"
       description="Explore our work, including EvenX, Liar's Dice, and AlignFive, and see how we help clients achieve their technology goals."
-      keywords="portfolio, projects, software development, web applications, mobile applications, multiplayer games, expense splitting, dice game, sequence game"
+      keywords="portfolio, projects, software development, web applications, mobile applications, multiplayer games, expense splitting, dice game, AlignFive"
       canonicalUrl="https://praxisinnovations.ca/portfolio"
     >
       {/* Hero */}
@@ -241,7 +241,8 @@ export default function Portfolio() {
                 AlignFive
               </h2>
               <p className="text-lg text-neutral-300 leading-relaxed mb-8">
-                A cross-platform Sequence experience with real-time multiplayer, private rooms,
+                A cross-platform five-in-a-row card-and-board strategy game for friends and family
+                with real-time multiplayer, private rooms,
                 bot matches, leaderboards, coin rewards, tournaments, and classic rules validated
                 by an authoritative game server.
               </p>
