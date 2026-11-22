@@ -269,6 +269,23 @@ export default function Portfolio() {
         </div>
       </section>
 
+      {/* Game guides */}
+      <section className="py-12 bg-neutral-900 border-t border-white/5">
+        <div className="container-custom container-padding text-center">
+          <p className="text-neutral-300">
+            Also from our team:{' '}
+            <a
+              href="https://playsequence.app/rules"
+              target="_blank"
+              rel="noopener"
+              className="text-emerald-300 hover:text-emerald-200 font-medium underline underline-offset-4"
+            >
+              Rules & strategy guides
+            </a>
+          </p>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="py-20 bg-gradient-to-r from-primary-600 to-accent-600 relative overflow-hidden">
         <div className="absolute inset-0">
